@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+
+
+    <label for="uname">Username:</label>
+    <input type="text" id="uname" name="uname">
+
+
+    <button id="joinGame" type="button" onclick="setVisibleJoinMessages()">Join Game</button>
+
+    <script>
+        function setVisibleJoinMessages() {
+            document.getElementById("fail").style.display = "inline";
+            document.getElementById("success").style.display = "inline";
+
+        }
+    </script>
+
+
+
+</div>
+
+
+<div>
+
+    <button id="startGame" type="button" onclick="setVisibleGameArea()">Start Game</button>
+
+    <script>
+        function setVisibleGameArea() {
+            document.getElementById("gameArea").style.display = "inline";
+        }
+    </script>
+
+
+</div>
+<div id="gameArea" style = "display:none">
+
+    <p>Select your adjustment</p>
+    <div>
+        <div>
+            <input type="radio" id="minusone" name="adjustment" value="-1"
+            >
+            <label for="minusone">-1</label>
+        </div>
+        <div>
+            <input type="radio" id="zero" name="adjustment" value="0"
+            >
+            <label for="zero">0</label>
+        </div>
+        <div>
+            <input type="radio" id="one" name="adjustment" value="1"
+            >
+            <label for="one">1</label>
+        </div>
+        <div>
+            <input type="radio" id="auto" name="adjustment" value="Auto"
+            >
+            <label for="auto">Auto</label>
+        </div>
+    </div>
+    <div>
+        <input id="play" type="button" value="Play">
+    </div>
+</div>
+
+<div>
+    <p>Messages</p>
+
+    <div id="fail" style = "display:none">
+        <p><strong>Opss!</strong> You couldn't join the game.</p>
+    </div>
+
+    <div id="success" style = "display:none">
+        <p><strong>Ready!</strong> You joined the game.</p>
+    </div>
+
+    </textarea
+</div>
+
+</body>
+</html>

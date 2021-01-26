@@ -1,11 +1,13 @@
 package com.fatma.gameofthree.model;
 
+import com.fatma.gameofthree.event.*;
+import com.fatma.gameofthree.exception.ErrorCode;
+import com.fatma.gameofthree.exception.GameException;
 import com.fatma.gameofthree.helper.CalculationResult;
-import com.fatma.gameofthree.model.exception.ErrorCode;
-import com.fatma.gameofthree.model.exception.GameException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.*;
 import java.util.Random;
@@ -20,10 +22,10 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Game
+public class Game extends AbstractAggregateRoot<Game>
 {
-    private static final int NUMBER_LOWER_BOUND = 200;
-    private static final int NUMBER_UPPER_BOUND = 500;
+    private static final int NUMBER_LOWER_BOUND = 100;
+    private static final int NUMBER_UPPER_BOUND = 400;
 
     @Id
     @Column(name = "id")
@@ -51,12 +53,16 @@ public class Game
         this.id = UUID.randomUUID().toString();
         this.state = GameState.HAS_EMPTY_SLOT;
         this.firstPlayerTurn = true;
+
+        registerEvent(new GameCreateEvent(id, firstPlayer));
     }
 
     public void addSecondPlayer(String secondPlayer)
     {
         this.secondPlayer = secondPlayer;
         this.state = GameState.READY;
+
+        registerEvent(new PlayerJoinEvent(id, secondPlayer));
     }
 
     public void startGame(String player)
@@ -71,6 +77,8 @@ public class Game
             this.number = generateRandomNumber();
             this.state = GameState.STARTED;
             switchTurn();
+
+            registerEvent(new GameStartEvent(id, number));
         }
         else
         {
@@ -91,9 +99,13 @@ public class Game
             this.number = result.getResultNumber();
             switchTurn();
 
+            registerEvent(new PlayerMoveEvent(id, player, result));
+
             if (number == 1)
             {
                 this.state = GameState.FINISHED;
+
+                registerEvent(new GameFinishEvent(id, player));
             }
         }
     }

@@ -1,12 +1,13 @@
-package com.fatma.gameofthree.model.event;
+package com.fatma.gameofthree.event;
 
+import com.fatma.gameofthree.helper.CalculationResult;
 import lombok.Getter;
 
 /**
  * Created by fatmaakinci on 24.01.2021.
  */
 @Getter
-public class PlayerMoveEvent extends AbstractGameEvent
+public class PlayerMoveEvent extends GameEvent
 {
     private final String player;
 
@@ -14,12 +15,12 @@ public class PlayerMoveEvent extends AbstractGameEvent
 
     private final int resultNumber;
 
-    public PlayerMoveEvent(String gameId, String player, int addedNumber, int resultNumber)
+    public PlayerMoveEvent(String gameId, String player, CalculationResult moveResult)
     {
         super(gameId);
         this.player = player;
-        this.addedNumber = addedNumber;
-        this.resultNumber = resultNumber;
+        this.addedNumber = moveResult.getAddedNumber();
+        this.resultNumber = moveResult.getResultNumber();
     }
 
     @Override

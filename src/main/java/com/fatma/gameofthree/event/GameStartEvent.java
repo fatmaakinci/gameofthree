@@ -1,4 +1,4 @@
-package com.fatma.gameofthree.model.event;
+package com.fatma.gameofthree.event;
 
 import lombok.Getter;
 
@@ -6,7 +6,7 @@ import lombok.Getter;
  * Created by fatmaakinci on 24.01.2021.
  */
 @Getter
-public class GameStartEvent extends AbstractGameEvent
+public class GameStartEvent extends GameEvent
 {
     private final int startNumber;
 

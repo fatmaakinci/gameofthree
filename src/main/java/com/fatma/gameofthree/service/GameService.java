@@ -2,10 +2,10 @@ package com.fatma.gameofthree.service;
 
 import com.fatma.gameofthree.controller.dto.MakeMoveRequest;
 import com.fatma.gameofthree.controller.dto.StartGameRequest;
-import com.fatma.gameofthree.model.exception.ErrorCode;
-import com.fatma.gameofthree.model.exception.GameException;
 import com.fatma.gameofthree.model.Game;
 import com.fatma.gameofthree.model.GameState;
+import com.fatma.gameofthree.exception.ErrorCode;
+import com.fatma.gameofthree.exception.GameException;
 import com.fatma.gameofthree.repository.IGameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,13 +29,10 @@ public class GameService implements IGameService
         if (game == null)
         {
             game = new Game(username);
-            //TODO new game created event
         }
         else
         {
             game.addSecondPlayer(username);
-
-            //TODO fire second player joined to game event
         }
 
         gameRepository.save(game);
@@ -49,9 +46,6 @@ public class GameService implements IGameService
         game.startGame(request.getPlayerName());
 
         gameRepository.save(game);
-
-        //TODO fire game started event
-        //TODO First move made automatically
     }
 
     @Override
@@ -62,9 +56,6 @@ public class GameService implements IGameService
         game.makeMove(request.getPlayerName(), request.getAdditionType(), request.getAddition());
 
         gameRepository.save(game);
-
-        //TODO fire move maded event
-        //TODO fire game finished event
     }
 
     private Game findGame(String gameId)

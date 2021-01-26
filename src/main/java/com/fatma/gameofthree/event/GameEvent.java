@@ -1,4 +1,4 @@
-package com.fatma.gameofthree.model.event;
+package com.fatma.gameofthree.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public abstract class AbstractGameEvent
+public abstract class GameEvent
 {
     private final String gameId;
 

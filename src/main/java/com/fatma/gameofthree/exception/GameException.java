@@ -1,4 +1,4 @@
-package com.fatma.gameofthree.model.exception;
+package com.fatma.gameofthree.exception;
 
 import lombok.Getter;
 

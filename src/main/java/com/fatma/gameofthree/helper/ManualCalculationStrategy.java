@@ -1,7 +1,7 @@
 package com.fatma.gameofthree.helper;
 
-import com.fatma.gameofthree.model.exception.ErrorCode;
-import com.fatma.gameofthree.model.exception.GameException;
+import com.fatma.gameofthree.exception.ErrorCode;
+import com.fatma.gameofthree.exception.GameException;
 
 import java.util.Set;
 
