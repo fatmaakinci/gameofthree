@@ -29,6 +29,4 @@ gradle spring-boot:run
 
 **2. Now you can play the game from:**
 
-```bash
  http://localhost:8080
- ```
