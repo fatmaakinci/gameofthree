@@ -24,7 +24,7 @@ git clone https://github.com/fatmaakinci/gameofthree.git
 
 ```bash
 cd gameofthree
-gradle package
+gradle build
 java -jar build/libs/gameofthree-0.0.1-SNAPSHOT.jar
 ```
 
