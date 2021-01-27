@@ -5,5 +5,5 @@ package com.fatma.gameofthree.helper;
  */
 public interface ICalculationStrategy
 {
-    CalculationResult calculate(Integer number, Integer addition);
+    CalculationResult calculate(Integer number, Integer addition, String player);
 }

@@ -21,7 +21,7 @@ public class ManualCalculationStrategyTest
     public void testInvalidRange()
     {
         GameException gameException = assertThrows(GameException.class,
-                () -> calculationStrategy.calculate(13, 2));
+                () -> calculationStrategy.calculate(13, 2, null));
 
         assertEquals(ErrorCode.INVALID_ADDITION_RANGE, gameException.getErrorCode());
     }
@@ -30,7 +30,7 @@ public class ManualCalculationStrategyTest
     public void testInvalidAddition()
     {
         GameException gameException = assertThrows(GameException.class,
-                () -> calculationStrategy.calculate(13, 1));
+                () -> calculationStrategy.calculate(13, 1, null));
 
         assertEquals(ErrorCode.INVALID_ADDITION, gameException.getErrorCode());
     }
@@ -38,7 +38,7 @@ public class ManualCalculationStrategyTest
     @Test
     public void test_subtract_one()
     {
-        CalculationResult result = calculationStrategy.calculate(13, -1);
+        CalculationResult result = calculationStrategy.calculate(13, -1, null);
 
         assertEquals(-1, result.getAddedNumber());
         assertEquals(4, result.getResultNumber());
@@ -47,7 +47,7 @@ public class ManualCalculationStrategyTest
     @Test
     public void test_add_one()
     {
-        CalculationResult result = calculationStrategy.calculate(14, 1);
+        CalculationResult result = calculationStrategy.calculate(14, 1, null);
 
         assertEquals(1, result.getAddedNumber());
         assertEquals(5, result.getResultNumber());
@@ -56,7 +56,7 @@ public class ManualCalculationStrategyTest
     @Test
     public void test_add_zero()
     {
-        CalculationResult result = calculationStrategy.calculate(18, 0);
+        CalculationResult result = calculationStrategy.calculate(18, 0, null);
 
         assertEquals(0, result.getAddedNumber());
         assertEquals(6, result.getResultNumber());

@@ -69,7 +69,7 @@ public class Game extends AbstractAggregateRoot<Game>
     {
         if (state != GameState.READY)
         {
-            throw new GameException(ErrorCode.INVALID_GAME_STATE);
+            throw new GameException(ErrorCode.INVALID_GAME_STATE, player);
         }
 
         if (firstPlayer.equals(player))
@@ -82,7 +82,7 @@ public class Game extends AbstractAggregateRoot<Game>
         }
         else
         {
-            throw new GameException(ErrorCode.INVALID_STARTER);
+            throw new GameException(ErrorCode.INVALID_STARTER, player);
         }
     }
 
@@ -90,12 +90,12 @@ public class Game extends AbstractAggregateRoot<Game>
     {
         if (state != GameState.STARTED)
         {
-            throw new GameException(ErrorCode.INVALID_GAME_STATE);
+            throw new GameException(ErrorCode.INVALID_GAME_STATE, player);
         }
 
         if (isUserAllowedToMakeMove(player))
         {
-            CalculationResult result = additionType.getCalculationStrategy().calculate(number, addition);
+            CalculationResult result = additionType.getCalculationStrategy().calculate(number, addition, player);
             this.number = result.getResultNumber();
             switchTurn();
 
@@ -114,7 +114,7 @@ public class Game extends AbstractAggregateRoot<Game>
     {
         if (!Set.of(firstPlayer, secondPlayer).contains(player))
         {
-            throw new GameException(ErrorCode.INVALID_PLAYER);
+            throw new GameException(ErrorCode.INVALID_PLAYER, player);
         }
         if (isFirstPlayerTurn() && player.equals(firstPlayer))
         {
@@ -126,7 +126,7 @@ public class Game extends AbstractAggregateRoot<Game>
             return true;
         }
 
-        throw new GameException(ErrorCode.INVALID_TURN);
+        throw new GameException(ErrorCode.INVALID_TURN, player);
     }
 
     private boolean isSecondPlayerTurn()

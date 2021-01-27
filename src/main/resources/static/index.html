@@ -3,7 +3,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Game of Three</title>
-    <link rel="stylesheet" href="/css/main.css" />
 </head>
 <body>
 <noscript>
@@ -11,38 +10,36 @@
 </noscript>
 
 <div id="username-page">
-    <div class="username-page-container">
-        <h1 class="title">Type your username</h1>
-        <form id="usernameForm" name="usernameForm">
-            <div class="form-group">
-                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
-            </div>
-            <div class="form-group">
-                <button type="submit" class="accent username-submit">Join Game</button>
-            </div>
-        </form>
-    </div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <button id="joinGame" type="button" onclick=connect()>Join Game</button>
 </div>
 
-<div id="game-page" class="hidden">
-    <div class="game-container">
+<div id="game-page">
+    <button id="startGame" type="button" onclick=startGame()>Start Game</button>
 
-        <div class="connecting">
-            Connecting...
-        </div>
+    <div class="move-container">
+        Select your Move:
+        <input type="radio" name="additionChoice" value="-1">-1
+        <input type="radio" name="additionChoice" value="0">0
+        <input type="radio" name="additionChoice" value="1">1
+        <input type="radio" name="additionChoice" value="Auto">Auto
 
-        <form id="messageForm" name="messageForm">
-            <div class="form-group">
-                <div class="input-group clearfix">
-                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                    <button type="submit" class="primary">Play</button>
-                </div>
-            </div>
-        </form>
-
-        <ul id="messageArea">
-        </ul>
+        <button id="makeMove" type="button" onclick=makeMove()>Play</button>
     </div>
+
+</div>
+
+<div id="messages-page">
+    <table id="messageTable">
+        <thead>
+        <tr>
+            <th>Messages</th>
+        </tr>
+        </thead>
+        <tbody id="messages">
+        </tbody>
+    </table>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>

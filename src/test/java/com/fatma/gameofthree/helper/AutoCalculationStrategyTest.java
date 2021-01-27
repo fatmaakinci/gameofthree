@@ -17,7 +17,7 @@ public class AutoCalculationStrategyTest
     @Test
     public void testSubtractOne()
     {
-        CalculationResult result = calculationStrategy.calculate(13, null);
+        CalculationResult result = calculationStrategy.calculate(13, null, null);
 
         assertEquals(-1, result.getAddedNumber());
         assertEquals(4, result.getResultNumber());
@@ -26,7 +26,7 @@ public class AutoCalculationStrategyTest
     @Test
     public void testAddOne()
     {
-        CalculationResult result = calculationStrategy.calculate(14, null);
+        CalculationResult result = calculationStrategy.calculate(14, null, null);
 
         assertEquals(1, result.getAddedNumber());
         assertEquals(5, result.getResultNumber());
@@ -35,7 +35,7 @@ public class AutoCalculationStrategyTest
     @Test
     public void testAddZero()
     {
-        CalculationResult result = calculationStrategy.calculate(18, null);
+        CalculationResult result = calculationStrategy.calculate(18, null, null);
 
         assertEquals(0, result.getAddedNumber());
         assertEquals(6, result.getResultNumber());

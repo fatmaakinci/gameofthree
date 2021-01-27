@@ -19,6 +19,6 @@ public class GameCreateEvent extends GameEvent
     @Override
     public String getMessage()
     {
-        return "New game is successfully created. Please wait for another player to join.";
+        return "New game is successfully created. Please wait for another player to start.";
     }
 }

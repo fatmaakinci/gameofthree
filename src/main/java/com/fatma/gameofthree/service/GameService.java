@@ -41,7 +41,7 @@ public class GameService implements IGameService
     @Override
     public void startGame(StartGameRequest request)
     {
-        Game game = findGame(request.getGameId());
+        Game game = findGame(request.getGameId(), request.getPlayerName());
 
         game.startGame(request.getPlayerName());
 
@@ -51,16 +51,16 @@ public class GameService implements IGameService
     @Override
     public void makeMove(MakeMoveRequest request)
     {
-        Game game = findGame(request.getGameId());
+        Game game = findGame(request.getGameId(), request.getPlayerName());
 
         game.makeMove(request.getPlayerName(), request.getAdditionType(), request.getAddition());
 
         gameRepository.save(game);
     }
 
-    private Game findGame(String gameId)
+    private Game findGame(String gameId, String player)
     {
         return gameRepository.findById(gameId)
-                .orElseThrow(() -> new GameException(ErrorCode.GAME_NOT_FOUND));
+                .orElseThrow(() -> new GameException(ErrorCode.GAME_NOT_FOUND, player));
     }
 }

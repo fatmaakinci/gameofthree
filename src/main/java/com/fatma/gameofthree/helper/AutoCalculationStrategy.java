@@ -6,7 +6,7 @@ package com.fatma.gameofthree.helper;
 public class AutoCalculationStrategy implements ICalculationStrategy
 {
     @Override
-    public CalculationResult calculate(Integer number, Integer addition)
+    public CalculationResult calculate(Integer number, Integer addition, String player)
     {
         int remaining = number % 3;
         int divisionResult = number / 3;

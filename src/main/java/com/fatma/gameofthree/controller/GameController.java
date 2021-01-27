@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.simp.annotation.SendToUser;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -18,7 +18,11 @@ import org.springframework.stereotype.Controller;
 @RequiredArgsConstructor
 public class GameController
 {
+    private static final String USER_ERROR_QUEUE = "/queue/error/";
+
     private final IGameService gameService;
+
+    private final SimpMessageSendingOperations messageSendingOperations;
 
     @MessageMapping("/join/{username}")
     public void join(@DestinationVariable String username)
@@ -39,9 +43,8 @@ public class GameController
     }
 
     @MessageExceptionHandler
-    @SendToUser("queue/error")
-    public String handleException(GameException ex)
+    public void handleException(GameException ex)
     {
-        return ex.getMessage();
+        messageSendingOperations.convertAndSend(USER_ERROR_QUEUE + ex.getUsername(), ex.getMessage());
     }
 }

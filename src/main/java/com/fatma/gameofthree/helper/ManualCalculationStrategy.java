@@ -11,18 +11,18 @@ import java.util.Set;
 public class ManualCalculationStrategy implements ICalculationStrategy
 {
     @Override
-    public CalculationResult calculate(Integer number, Integer addition)
+    public CalculationResult calculate(Integer number, Integer addition, String player)
     {
         if (!Set.of(-1, 0, 1).contains(addition))
         {
-            throw new GameException(ErrorCode.INVALID_ADDITION_RANGE);
+            throw new GameException(ErrorCode.INVALID_ADDITION_RANGE, player);
         }
 
         int addedNumber = number + addition;
 
         if ((addedNumber % 3) != 0)
         {
-            throw new GameException(ErrorCode.INVALID_ADDITION);
+            throw new GameException(ErrorCode.INVALID_ADDITION, player);
         }
 
         return new CalculationResult(addition,addedNumber / 3);
