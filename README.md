@@ -7,7 +7,7 @@ Divide it by three. The resulting whole number is then sent back to the original
 
 ## Requirements
 
-1. Java - 1.8.x or higher
+1. Java - 11
 
 2. Gradle - 6.3.x or higher
 
