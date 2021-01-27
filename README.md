@@ -31,7 +31,8 @@ java -jar build/libs/gameofthree-0.0.1-SNAPSHOT.jar
 Alternatively, you can run the app directly without packaging it
 
 ```bash
-gradle spring-boot:run
+cd gameofthree
+gradle bootRun
 ```
 
 **3. Now you can play the game from:**
