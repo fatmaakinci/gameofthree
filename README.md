@@ -27,6 +27,6 @@ Alternatively, you can run the app directly without packaging it
 gradle spring-boot:run
 ```
 
-**2. Now you can play the game from:**
+**3. Now you can play the game from:**
 
  http://localhost:8080
