@@ -5,6 +5,13 @@ player as an approach of starting the game. The receiving player can now always 
 Divide it by three. The resulting whole number is then sent back to the original sender.The same rules are applied until one player reaches the number 1(after the division).
 
 
+## Requirements
+
+1. Java - 1.8.x or higher
+
+2. Gradle - 6.3.x or higher
+
+
 ## Steps to Setup
 
 **1. Clone the application**
